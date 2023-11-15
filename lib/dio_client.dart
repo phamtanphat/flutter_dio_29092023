@@ -4,7 +4,7 @@ class DioClient {
   static final DioClient _instance = DioClient._internal();
   Dio? _dio;
 
-  factory DioClient() {
+  static DioClient getInstance(){
     return _instance;
   }
 
