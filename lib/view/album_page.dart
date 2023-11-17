@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dio_29092023/bloc/album_bloc.dart';
 import 'package:flutter_dio_29092023/bloc/album_event.dart';
+import 'package:flutter_dio_29092023/data/album.dart';
 import 'package:flutter_dio_29092023/repository/album_repository.dart';
 
 class AlbumPage extends StatefulWidget {
@@ -29,7 +30,37 @@ class _AlbumPageState extends State<AlbumPage> {
       appBar: AppBar(
         title: Text("Demo dio"),
       ),
-      body: Container(),
+      body: Container(
+        constraints: BoxConstraints.expand(),
+        child: StreamBuilder<List<Album>>(
+          initialData: [],
+          stream: bloc.albumController.stream,
+          builder: (context, snapshot){
+            if (snapshot.hasError) {
+              return Center(child: Text(snapshot.error.toString()));
+            }
+
+            if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.active) {
+                return ListView.builder(
+                    itemCount: snapshot.data?.length ?? 0,
+                    itemBuilder: (context, index) {
+                        var album = snapshot.data?[index];
+                        if (album == null) return Container();
+                        return Card(
+                          child: ListTile(
+                            title: Text(album.title),
+                          ),
+                        );
+                    }
+                );
+              }
+            }
+
+            return Container();
+          },
+        ),
+      ),
     );
   }
 }

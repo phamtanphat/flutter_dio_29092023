@@ -26,9 +26,10 @@ class AlbumBloc {
           List<Album> listAlbum = response.data?.map((data) {
             return AlbumUtil.parseJSONToAlbum(data);
           }).toList() ?? List.empty();
+          albumController.sink.add(listAlbum);
         })
         .catchError((error) {
-          print(error.toString());
+          albumController.sink.addError(error);
         });
   }
 }
