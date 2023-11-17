@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dio_29092023/demo_dio.dart';
+import 'package:flutter_dio_29092023/view/album_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DemoDio()
+      home: AlbumPage()
     );
   }
 }

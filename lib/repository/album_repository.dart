@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_dio_29092023/dio_client.dart';
+import 'package:flutter_dio_29092023/data/dio_client.dart';
 
 class AlbumRepository {
   Dio dio = DioClient.getInstance().getDio();
