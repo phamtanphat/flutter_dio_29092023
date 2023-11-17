@@ -14,11 +14,6 @@ class _DemoDioState extends State<DemoDio> {
   @override
   void didUpdateWidget(covariant DemoDio oldWidget) {
     super.didUpdateWidget(oldWidget);
-    var dio1 = DioClient.getInstance();
-    var dio2 = DioClient.getInstance();
-    // print(dio1 == dio2);
-    var person = Person(Type.MALE);
-    print(person.runtimeType);
   }
 
   @override

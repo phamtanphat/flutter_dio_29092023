@@ -8,8 +8,10 @@ class DioClient {
     return _instance;
   }
 
-  DioClient._internal() {
-    _dio ??= Dio(BaseOptions(
+  DioClient._internal();
+
+  Dio getDio() {
+    return _dio ??= Dio(BaseOptions(
       baseUrl: "https://jsonplaceholder.typicode.com/",
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
