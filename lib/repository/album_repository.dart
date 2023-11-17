@@ -2,10 +2,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dio_29092023/data/dio_client.dart';
 
 class AlbumRepository {
-  Dio dio = DioClient.getInstance().getDio();
+  final Dio _dio = DioClient.getInstance().getDio();
 
   Future requestAlbumFromId(String albumId) {
-      return dio.get("/photos", queryParameters: {
+      return _dio.get("/photos", queryParameters: {
         "albumId": albumId
       });
   }
