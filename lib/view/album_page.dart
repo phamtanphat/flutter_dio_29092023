@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dio_29092023/bloc/album_bloc.dart';
+import 'package:flutter_dio_29092023/bloc/album_event.dart';
+import 'package:flutter_dio_29092023/repository/album_repository.dart';
 
 class AlbumPage extends StatefulWidget {
   const AlbumPage({super.key});
@@ -9,9 +12,15 @@ class AlbumPage extends StatefulWidget {
 
 class _AlbumPageState extends State<AlbumPage> {
 
+  late AlbumBloc bloc;
+  late AlbumRepository repository;
+
   @override
-  void didUpdateWidget(covariant AlbumPage oldWidget) {
-    super.didUpdateWidget(oldWidget);
+  void initState() {
+    super.initState();
+    repository = AlbumRepository();
+    bloc = AlbumBloc(repository);
+    bloc.getAlbumFromId(GetAlbumEvent("1"));
   }
 
   @override

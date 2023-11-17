@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter_dio_29092023/data/album.dart';
 import 'package:flutter_dio_29092023/repository/album_repository.dart';
+import 'package:flutter_dio_29092023/ultil/album_util.dart';
 import 'album_event.dart';
 
 class AlbumBloc {
@@ -21,8 +22,10 @@ class AlbumBloc {
   void getAlbumFromId(GetAlbumEvent event) {
     albumRepository
         .requestAlbumFromId(event.albumId)
-        .then((value) {
-          print(value.toString());
+        .then((response) {
+          List<Album> listAlbum = response.data?.map((data) {
+            return AlbumUtil.parseJSONToAlbum(data);
+          }).toList() ?? List.empty();
         })
         .catchError((error) {
           print(error.toString());
