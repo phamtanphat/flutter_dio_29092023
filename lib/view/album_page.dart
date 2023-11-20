@@ -49,6 +49,10 @@ class _AlbumPageState extends State<AlbumPage> {
                         if (album == null) return Container();
                         return Card(
                           child: ListTile(
+                            leading: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.network(album.url),
+                            ),
                             title: Text(album.title),
                           ),
                         );
